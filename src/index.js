@@ -4,7 +4,7 @@ const { Client, GatewayIntentBits, REST, Routes } = require("discord.js");
 const path = require("path");
 
 // Auto-load all commands from /commands
-const commands = require("./commands.index");
+const commands = require("./commands");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
