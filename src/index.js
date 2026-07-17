@@ -1,11 +1,14 @@
 require("dotenv").config();
 
 const { Client, GatewayIntentBits, REST, Routes } = require("discord.js");
-const pingCommand = require("./commands/ping.js");
+const path = require("path");
+
+// Auto-load all commands from /commands
+const commands = require("./commands");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-client.once("clientReady", async () => {
+client.once("ready", async () => {
     console.log(`Logged in as ${client.user.tag}`);
 
     const clientId = client.user.id;
@@ -17,9 +20,7 @@ client.once("clientReady", async () => {
         await rest.put(
             Routes.applicationCommands(clientId),
             {
-                body: [
-                    pingCommand.data.toJSON()
-                ]
+                body: commands.map(cmd => cmd.data.toJSON())
             }
         );
 
@@ -32,13 +33,14 @@ client.once("clientReady", async () => {
 client.on("interactionCreate", async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === pingCommand.data.name) {
-        return pingCommand.execute(interaction);
-    }
+    const command = commands.find(cmd => cmd.data.name === interaction.commandName);
+    if (!command) return;
+
+    return command.execute(interaction);
 });
 
 if (!process.env.TOKEN) {
-    console.error("Error: Discord bot token is not defined in environment variables. Set the TOKEN environment variable.");
+    console.error("Error: Discord bot token is not defined in environment variables.");
     process.exit(1);
 }
 
