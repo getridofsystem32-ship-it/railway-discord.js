@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("CCU")
+    .setName("ccu")
     .setDescription("gives lurking giants ccu"),
 
    async execute(interaction) {
