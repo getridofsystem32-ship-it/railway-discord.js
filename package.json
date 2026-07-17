@@ -1,5 +1,8 @@
 {
   "main": "src/commands/index.js",
+  "scripts": {
+    "start": "node src/commands/index.js"
+  },
   "dependencies": {
     "discord.js": "^14.24.2",
     "dotenv": "^17.2.3"
