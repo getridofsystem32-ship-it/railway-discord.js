@@ -12,7 +12,7 @@ module.exports = {
   
       try {
         const res = await fetch(
-          `https://roproxy.com/games/v1/games/multiget-place-details?placeIds=${universeId}`
+          `https://roproxy.com/games/v1/games?universeIds=${universeId}`
         );
   
         const json = await res.json();
