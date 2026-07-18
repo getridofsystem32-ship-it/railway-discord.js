@@ -5,8 +5,8 @@ const {
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("ccu")
-    .setDescription("Shows the current CCU for Lurking Giants"),
+    .setName("GameStats")
+    .setDescription("shows gamestats"),
 
   async execute(interaction) {
     const universeId = 2339944792;
