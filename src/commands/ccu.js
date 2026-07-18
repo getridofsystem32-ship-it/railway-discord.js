@@ -5,7 +5,7 @@ const {
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("GameStats")
+    .setName("gamestats")
     .setDescription("shows gamestats"),
 
   async execute(interaction) {
