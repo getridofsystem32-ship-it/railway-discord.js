@@ -6,7 +6,7 @@ module.exports = {
     .setDescription("gives lurking giants ccu"),
 
   async execute(interaction) {
-    const universeId = 6328880674; // Lurking Giants universe ID
+    const universeId = 1818; // Lurking Giants universe ID
 
     await interaction.deferReply();
 
